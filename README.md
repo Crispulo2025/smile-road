@@ -57,3 +57,26 @@ Subscribe here:
 ---
 
 ## 📁 Project Structure
+
+---
+
+## 🎯 Purpose
+
+This project was created to:
+- Build a personal brand for SMILE ROAD  
+- Practice web development skills  
+- Create a professional online presence for a YouTube channel  
+- Learn GitHub Pages deployment  
+
+---
+
+## 👤 Creator
+
+Developed by: Engr. Crispulo G. Maranan
+Feel free to explore and share feedback!
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License — you are free to use and modify it with attribution.
