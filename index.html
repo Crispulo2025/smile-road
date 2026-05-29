@@ -1,220 +1,220 @@
-<!-- SMILE ROAD — Homepage (UPDATED FIXED VERSION) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SMILE ROAD 🎬</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SMILE ROAD UNIVERSITY 🌐</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --bg: #0b1020;
-      --card: #111827;
-      --accent: #ff4d6d;
-      --accent2: #ff8fa3;
-      --text: #ffffff;
-      --muted: #cbd5e1;
-    }
+<style>
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+:root{
+  --bg:#070b18;
+  --card:#111a2e;
+  --accent:#ff4d6d;
+  --accent2:#ff8fa3;
+  --text:#fff;
+  --muted:#b9c2d3;
+}
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-    }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
 
-    /* NAVBAR */
-    nav {
-      position: fixed;
-      width: 100%;
-      top: 0;
-      display: flex;
-      justify-content: space-between;
-      padding: 18px 60px;
-      background: rgba(0,0,0,0.7);
-      backdrop-filter: blur(10px);
-      z-index: 1000;
-    }
+body{
+  font-family:Poppins,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
 
-    .logo {
-      color: var(--accent);
-      font-weight: 700;
-      font-size: 1.6rem;
-    }
+/* FLOATING BACKGROUND */
+.bg-animation{
+  position:fixed;
+  width:100%;
+  height:100%;
+  z-index:-1;
+  background: radial-gradient(circle at 20% 20%, #ff4d6d33, transparent 40%),
+              radial-gradient(circle at 80% 70%, #ff8fa333, transparent 40%),
+              radial-gradient(circle at 50% 50%, #3b82f633, transparent 50%);
+  animation: moveBg 10s infinite alternate ease-in-out;
+}
 
-    nav ul {
-      display: flex;
-      gap: 20px;
-      list-style: none;
-    }
+@keyframes moveBg{
+  from{transform:scale(1);}
+  to{transform:scale(1.2);}
+}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      transition: 0.3s;
-    }
+/* HEADER */
+header{
+  text-align:center;
+  padding:120px 20px 60px;
+}
 
-    nav a:hover {
-      color: var(--accent);
-    }
+header h1{
+  font-size:3rem;
+  letter-spacing:2px;
+  animation: glow 2s infinite alternate;
+}
 
-    /* HERO */
-    .hero {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 0 80px;
-      background:
-        linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
-        url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600') center/cover;
-    }
+@keyframes glow{
+  from{text-shadow:0 0 10px #ff4d6d;}
+  to{text-shadow:0 0 25px #ff8fa3;}
+}
 
-    .hero h1 {
-      font-size: 3.5rem;
-    }
+header p{
+  color:var(--muted);
+  margin-top:10px;
+}
 
-    .hero p {
-      color: var(--muted);
-      margin-top: 10px;
-    }
+/* BUTTON */
+.btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:14px 28px;
+  border-radius:50px;
+  background:var(--accent);
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+  transition:.3s;
+  box-shadow:0 0 20px #ff4d6d55;
+}
 
-    section {
-      padding: 90px 60px;
-    }
+.btn:hover{
+  transform:translateY(-5px) scale(1.05);
+  background:#ff2d55;
+}
 
-    .section-title {
-      font-size: 2rem;
-      color: var(--accent2);
-      margin-bottom: 20px;
-    }
+/* PORTAL GRID */
+.portal{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+  padding:40px 60px;
+}
 
-    .box {
-      background: var(--card);
-      padding: 25px;
-      border-radius: 15px;
-      margin-top: 20px;
-    }
+.card{
+  background:var(--card);
+  padding:25px;
+  border-radius:18px;
+  transition:.4s;
+  border:1px solid #ffffff10;
+  position:relative;
+  overflow:hidden;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
-    }
+.card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 25px #ff4d6d55;
+}
 
-    .card {
-      background: #1f2937;
-      padding: 20px;
-      border-radius: 15px;
-    }
+.card h3{
+  color:var(--accent2);
+  margin-bottom:10px;
+}
 
-    footer {
-      text-align: center;
-      padding: 30px;
-      background: #050816;
-      color: var(--muted);
-    }
-  </style>
+/* LEVEL 81 BUTTON */
+.level81{
+  text-align:center;
+  padding:60px 20px;
+}
+
+.level81 a{
+  font-size:1.2rem;
+  padding:16px 40px;
+  border-radius:60px;
+  background:linear-gradient(45deg,#ff4d6d,#ff8fa3);
+  color:white;
+  text-decoration:none;
+  font-weight:700;
+  animation:pulse 2s infinite;
+  display:inline-block;
+}
+
+@keyframes pulse{
+  0%{box-shadow:0 0 10px #ff4d6d55;}
+  50%{box-shadow:0 0 30px #ff4d6daa;}
+  100%{box-shadow:0 0 10px #ff4d6d55;}
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:30px;
+  color:var(--muted);
+  background:#050816;
+}
+
+</style>
 </head>
 
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="logo">SMILE ROAD 🎬</div>
-  <ul>
-    <li><a href="#home">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#content">Content</a></li>
-    <li><a href="#community">Community</a></li>
-  </ul>
-</nav>
+<div class="bg-animation"></div>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div>
-    <h1>SMILE ROAD</h1>
-    <p>INSPIRE. LEARN. EXPLORE. SMILE.</p>
-    <p><b>Knowledge today, freedom tomorrow.</b></p>
-    <p>Every step. Every smile. Every story.</p>
+<header>
+  <h1>SMILE ROAD UNIVERSITY</h1>
+  <p>Knowledge. Purpose. Impact.</p>
+  <p><b>INSPIRE. LEARN. EXPLORE. SMILE.</b></p>
+  <a href="#portal" class="btn">Enter Portal</a>
+</header>
+
+<!-- PORTAL GRID -->
+<section id="portal" class="portal">
+
+  <div class="card">
+    <h3>📘 Education</h3>
+    <p>Empowering Minds through deep explanations and learning systems.</p>
   </div>
+
+  <div class="card">
+    <h3>💻 Technology</h3>
+    <p>HTML, CSS, JavaScript, Programming, and innovation pathways.</p>
+  </div>
+
+  <div class="card">
+    <h3>🌿 Nature</h3>
+    <p>Protecting our environment and understanding Earth systems.</p>
+  </div>
+
+  <div class="card">
+    <h3>🎭 Culture</h3>
+    <p>Celebrating Filipino heritage and global diversity.</p>
+  </div>
+
+  <div class="card">
+    <h3>🧠 Learning System</h3>
+    <p>Interactive education designed for SHS learners and beyond.</p>
+  </div>
+
+  <div class="card">
+    <h3>🌐 Community</h3>
+    <p>We learn. We share. We smile.</p>
+  </div>
+
 </section>
 
-<!-- ABOUT (FIXED — THIS MAKES THE BUTTON WORK) -->
-<section id="about">
-  <h2 class="section-title">ABOUT SMILE ROAD</h2>
+<!-- LEVEL 81 -->
+<section class="level81">
 
-  <div class="box">
-    <p>
-      SMILE ROAD is a YouTube channel dedicated to sharing educational, creative, and positive content that inspires curiosity and brings a smile to every viewer’s day.
-    </p>
+  <h2>ENTER HERE TO LEVEL 81</h2>
+  <p style="color:#b9c2d3;margin-top:10px;">
+    Every step. Every smile. Every story.
+  </p>
 
-    <br/>
+  <br/>
 
-    <p>
-      It features lessons in General Mathematics, General Science, Computer Programming, and real-world learning experiences for SHS learners.
-    </p>
+  <a href="#">START JOURNEY 🚀</a>
 
-    <br/>
-
-    <p><b>“Share the road with a smile.”</b></p>
-  </div>
 </section>
 
-<!-- CONTENT -->
-<section id="content">
-  <h2 class="section-title">EDUCATION</h2>
-
-  <div class="box">
-    <p><b>Empowering Minds</b></p>
-    <p>Educational Videos • Deep Explanations • Real-World Insights • Positive Impact</p>
-  </div>
-
-  <h2 class="section-title">CONTENT AREAS</h2>
-
-  <div class="grid">
-    <div class="card">
-      <h3>💻 Technology</h3>
-      <p>Innovating the Future</p>
-    </div>
-
-    <div class="card">
-      <h3>🌿 Nature</h3>
-      <p>Protecting Our Planet</p>
-    </div>
-
-    <div class="card">
-      <h3>🎭 Culture</h3>
-      <p>Celebrating Our Heritage</p>
-    </div>
-  </div>
-</section>
-
-<!-- COMMUNITY -->
-<section id="community">
-  <h2 class="section-title">COMMUNITY MESSAGE</h2>
-
-  <div class="box">
-    <p><b>We learn. We share. We smile.</b></p>
-    <br/>
-    <p>🌐 youtube.com/@SmileRoad</p>
-    <p>👍 Like • 🔔 Subscribe • 📣 Turn on notifications</p>
-  </div>
-</section>
-
-<!-- FOOTER -->
 <footer>
-  © 2026 SMILE ROAD. All rights reserved.
+  © 2026 SMILE ROAD UNIVERSITY — Proudly Filipino. Proudly Forward.
 </footer>
 
 </body>
