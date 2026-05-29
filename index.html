@@ -1,4 +1,4 @@
-<!-- SMILE ROAD — Homepage -->
+<!-- SMILE ROAD — Homepage (UPDATED FIXED VERSION) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +20,12 @@
       --muted: #cbd5e1;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: 'Poppins', sans-serif;
@@ -28,6 +33,7 @@
       color: var(--text);
     }
 
+    /* NAVBAR */
     nav {
       position: fixed;
       width: 100%;
@@ -35,35 +41,65 @@
       display: flex;
       justify-content: space-between;
       padding: 18px 60px;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.7);
       backdrop-filter: blur(10px);
       z-index: 1000;
     }
 
-    .logo { color: var(--accent); font-weight: 700; font-size: 1.6rem; }
+    .logo {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1.6rem;
+    }
 
-    nav ul { display: flex; gap: 20px; list-style: none; }
+    nav ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
 
-    nav a { color: white; text-decoration: none; }
+    nav a {
+      color: white;
+      text-decoration: none;
+      transition: 0.3s;
+    }
 
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    /* HERO */
     .hero {
       height: 100vh;
       display: flex;
       align-items: center;
       padding: 0 80px;
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-      url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600') center/cover;
+      background:
+        linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+        url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600') center/cover;
     }
 
-    .hero h1 { font-size: 3.5rem; }
-    .hero p { color: var(--muted); margin-top: 10px; }
+    .hero h1 {
+      font-size: 3.5rem;
+    }
 
-    section { padding: 80px 60px; }
+    .hero p {
+      color: var(--muted);
+      margin-top: 10px;
+    }
 
-    .section-title { color: var(--accent2); font-size: 2rem; margin-bottom: 20px; }
+    section {
+      padding: 90px 60px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      color: var(--accent2);
+      margin-bottom: 20px;
+    }
 
     .box {
-      background: #111827;
+      background: var(--card);
       padding: 25px;
       border-radius: 15px;
       margin-top: 20px;
@@ -73,6 +109,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 15px;
+      margin-top: 20px;
     }
 
     .card {
@@ -87,7 +124,6 @@
       background: #050816;
       color: var(--muted);
     }
-
   </style>
 </head>
 
@@ -114,29 +150,38 @@
   </div>
 </section>
 
-<!-- INTRO BRAND -->
-<section>
-  <h2 class="section-title">THIS IS MY SMILE ROAD</h2>
+<!-- ABOUT (FIXED — THIS MAKES THE BUTTON WORK) -->
+<section id="about">
+  <h2 class="section-title">ABOUT SMILE ROAD</h2>
+
   <div class="box">
-    <p>EDUCATION · TECHNOLOGY · NATURE</p>
-    <p><b>Inspire. Learn. Explore. Smile.</b></p>
+    <p>
+      SMILE ROAD is a YouTube channel dedicated to sharing educational, creative, and positive content that inspires curiosity and brings a smile to every viewer’s day.
+    </p>
+
     <br/>
-    <p>LET'S WALK TOGETHER. LET'S BUILD TOMORROW.</p>
-    <p><b>ENTER HERE TO LEVEL 81</b></p>
+
+    <p>
+      It features lessons in General Mathematics, General Science, Computer Programming, and real-world learning experiences for SHS learners.
+    </p>
+
     <br/>
-    <p><b>SMILE ROAD — Proudly Filipino. Proudly Forward.</b></p>
+
+    <p><b>“Share the road with a smile.”</b></p>
   </div>
 </section>
 
-<!-- EDUCATION + CONTENT -->
+<!-- CONTENT -->
 <section id="content">
   <h2 class="section-title">EDUCATION</h2>
+
   <div class="box">
     <p><b>Empowering Minds</b></p>
     <p>Educational Videos • Deep Explanations • Real-World Insights • Positive Impact</p>
   </div>
 
   <h2 class="section-title">CONTENT AREAS</h2>
+
   <div class="grid">
     <div class="card">
       <h3>💻 Technology</h3>
@@ -158,25 +203,12 @@
 <!-- COMMUNITY -->
 <section id="community">
   <h2 class="section-title">COMMUNITY MESSAGE</h2>
+
   <div class="box">
     <p><b>We learn. We share. We smile.</b></p>
     <br/>
     <p>🌐 youtube.com/@SmileRoad</p>
     <p>👍 Like • 🔔 Subscribe • 📣 Turn on notifications</p>
-  </div>
-</section>
-
-<!-- UNIVERSITY -->
-<section>
-  <h2 class="section-title">S.R.U. – SMILE ROAD UNIVERSITY</h2>
-  <div class="box">
-    <p><b>Knowledge. Purpose. Impact.</b></p>
-    <br/>
-    <p><b>CORE VALUES</b></p>
-    <p>✔ Excellence in Learning</p>
-    <p>✔ Innovation in Thinking</p>
-    <p>✔ Inspiration in Action</p>
-    <p>✔ Integrity in Purpose</p>
   </div>
 </section>
 
