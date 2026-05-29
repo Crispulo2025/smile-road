@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>SMILE ROAD 🎬</title>
 
   <style>
@@ -20,6 +21,7 @@
       padding: 0;
       box-sizing: border-box;
       font-family: "Segoe UI", Arial, sans-serif;
+      scroll-behavior: smooth;
     }
 
     body {
@@ -28,7 +30,7 @@
       line-height: 1.7;
     }
 
-    /* NAV */
+    /* NAVBAR */
     nav {
       display: flex;
       justify-content: space-between;
@@ -37,8 +39,8 @@
       background: rgba(17, 24, 39, 0.95);
       position: sticky;
       top: 0;
-      backdrop-filter: blur(10px);
       z-index: 1000;
+      backdrop-filter: blur(10px);
     }
 
     nav h1 {
@@ -50,7 +52,7 @@
     nav a {
       color: var(--text);
       text-decoration: none;
-      margin-left: 18px;
+      margin-left: 20px;
       font-weight: 500;
       transition: 0.3s;
     }
@@ -59,7 +61,7 @@
       color: var(--accent);
     }
 
-    /* HERO (HOME) */
+    /* HERO SECTION */
     .hero {
       text-align: center;
       padding: 110px 20px;
@@ -68,30 +70,31 @@
 
     .hero h2 {
       font-size: 3rem;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
 
     .hero p {
       font-size: 1.2rem;
-      max-width: 650px;
+      max-width: 700px;
       margin: auto;
     }
 
+    /* BUTTON */
     .btn {
       display: inline-block;
-      margin-top: 25px;
+      margin-top: 30px;
       padding: 12px 28px;
       background: var(--card);
       color: var(--text);
-      border-radius: 30px;
       text-decoration: none;
+      border-radius: 30px;
       font-weight: 600;
       transition: 0.3s;
     }
 
     .btn:hover {
-      transform: translateY(-3px);
       background: #000;
+      transform: translateY(-3px);
     }
 
     /* SECTIONS */
@@ -101,14 +104,14 @@
     }
 
     section h2 {
-      margin-bottom: 25px;
       color: var(--accent);
       font-size: 2rem;
+      margin-bottom: 25px;
     }
 
     section p {
       max-width: 900px;
-      margin: 10px auto;
+      margin: 15px auto;
       color: var(--muted);
     }
 
@@ -124,8 +127,8 @@
     iframe {
       width: 100%;
       height: 220px;
-      border-radius: 14px;
       border: none;
+      border-radius: 14px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.3);
     }
 
@@ -134,30 +137,43 @@
       text-align: center;
       padding: 25px;
       background: var(--card);
-      font-size: 0.9rem;
       color: var(--muted);
-      margin-top: 50px;
+      font-size: 0.9rem;
+      margin-top: 40px;
     }
 
     /* MOBILE */
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
+
       nav {
         flex-direction: column;
-        gap: 10px;
+        gap: 12px;
+      }
+
+      nav div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
       }
 
       .hero h2 {
         font-size: 2.2rem;
       }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
     }
   </style>
 </head>
 
 <body>
 
-  <!-- NAV -->
+  <!-- NAVIGATION -->
   <nav>
     <h1>SMILE ROAD 🎬</h1>
+
     <div>
       <a href="#home">Home</a>
       <a href="#about">About</a>
@@ -166,50 +182,91 @@
     </div>
   </nav>
 
-  <!-- HERO (HOME) -->
+  <!-- HERO / HOME -->
   <div class="hero" id="home">
-    <h2>SMILE ROAD 😊</h2>
-    <p>Educational, creative, and positive content that inspires curiosity and brings joy to learning.</p>
 
-    <a class="btn" href="https://youtube.com/@SMILEROAD-r5l" target="_blank">
+    <h2>SMILE ROAD 😊</h2>
+
+    <p>
+      Educational, creative, and positive content that inspires curiosity and brings joy to learning.
+    </p>
+
+    <a class="btn"
+       href="https://youtube.com/@SMILEROAD-r5l"
+       target="_blank">
       Subscribe on YouTube
     </a>
+
   </div>
 
   <!-- ABOUT -->
   <section id="about">
+
     <h2>About SMILE ROAD</h2>
 
-    <p>SMILE ROAD is a YouTube channel dedicated to sharing educational, creative, and positive content that inspires curiosity and brings a smile to every viewer’s day.</p>
+    <p>
+      SMILE ROAD is a YouTube channel dedicated to sharing educational, creative, and positive content that inspires curiosity and brings a smile to every viewer’s day.
+    </p>
 
-    <p>It features lessons in General Mathematics, General Science, and a wide range of programming and technology topics, including HTML5 Programming, Cascading Style Sheets (CSS), JavaScript functions, C# programming, ASP.NET Model-View-Controller (MVC), Java Programming, and Oracle Database systems.</p>
+    <p>
+      It features lessons in General Mathematics, General Science, and a wide range of programming and technology topics, including HTML5 Programming, Cascading Style Sheets (CSS), JavaScript functions, C# programming, ASP.NET Model-View-Controller (MVC), Java Programming, and Oracle Database systems.
+    </p>
 
-    <p>All content is aligned with the Grade 11/12 Strengthened Senior High School Curriculum in the Philippines.</p>
+    <p>
+      All content is aligned with the Grade 11/12 Strengthened Senior High School Curriculum in the Philippines.
+    </p>
 
-    <p>Beyond academics, the channel will also expand into travel and exploration content, showcasing meaningful experiences from different destinations and promoting learning beyond the classroom.</p>
+    <p>
+      Beyond academics, the channel will also expand into travel and exploration content, showcasing meaningful experiences from different destinations and promoting learning beyond the classroom.
+    </p>
 
-    <p>Guided by the philosophy “Share the road with a smile,” SMILE ROAD aims to make every journey—whether in education or adventure—uplifting, engaging, and full of positivity. 😊</p>
+    <p>
+      Guided by the philosophy “Share the road with a smile,” SMILE ROAD aims to make every journey—whether in education or adventure—uplifting, engaging, and full of positivity. 😊
+    </p>
+
   </section>
 
   <!-- VIDEOS -->
   <section id="videos">
+
     <h2>Latest Videos 🎥</h2>
 
     <div class="videos">
-      <iframe src="https://www.youtube.com/embed/mOPJrBOG0Ks?list=PLg1E3BuXRVb9tUeMxjJR5fHIJJ5UICZKl&index=57" allowfullscreen></iframe>
-      <iframe src="https://www.youtube.com/embed/Mr235v1XYSg?list=PLg1E3BuXRVb-Ji5RNobtrywK1PtAQ8CMT&index=55" allowfullscreen></iframe>
-      <iframe src="https://www.youtube.com/embed/S1nHd7fR0oE?list=PLg1E3BuXRVb9YsF2pOlQkul-z6iOKf2fn&index=74" allowfullscreen></iframe>
+
+      <iframe
+        src="https://www.youtube.com/embed/mOPJrBOG0Ks?list=PLg1E3BuXRVb9tUeMxjJR5fHIJJ5UICZKl&index=57"
+        allowfullscreen>
+      </iframe>
+
+      <iframe
+        src="https://www.youtube.com/embed/Mr235v1XYSg?list=PLg1E3BuXRVb-Ji5RNobtrywK1PtAQ8CMT&index=55"
+        allowfullscreen>
+      </iframe>
+
+      <iframe
+        src="https://www.youtube.com/embed/S1nHd7fR0oE?list=PLg1E3BuXRVb9YsF2pOlQkul-z6iOKf2fn&index=74"
+        allowfullscreen>
+      </iframe>
+
     </div>
+
   </section>
 
   <!-- CONTACT -->
   <section id="contact">
-    <h2>Connect With Us</h2>
-    <p>Subscribe to SMILE ROAD for updates, lessons, and new adventures.</p>
 
-    <a class="btn" href="https://youtube.com/@SMILEROAD-r5l" target="_blank">
+    <h2>Connect With Us</h2>
+
+    <p>
+      Subscribe to SMILE ROAD for updates, lessons, and new adventures.
+    </p>
+
+    <a class="btn"
+       href="https://youtube.com/@SMILEROAD-r5l"
+       target="_blank">
       Visit Channel
     </a>
+
   </section>
 
   <!-- FOOTER -->
