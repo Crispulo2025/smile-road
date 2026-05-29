@@ -1,6 +1,4 @@
-# SMILE ROAD — Homepage
-
-```html
+<!-- SMILE ROAD — Homepage -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,302 +11,81 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-
     :root {
       --bg: #0b1020;
       --card: #111827;
-      --card-hover: #1f2937;
       --accent: #ff4d6d;
       --accent2: #ff8fa3;
       --text: #ffffff;
       --muted: #cbd5e1;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
     body {
       font-family: 'Poppins', sans-serif;
       background: var(--bg);
       color: var(--text);
-      overflow-x: hidden;
     }
-
-    /* NAVBAR */
 
     nav {
       position: fixed;
       width: 100%;
       top: 0;
-      left: 0;
-      z-index: 1000;
       display: flex;
       justify-content: space-between;
-      align-items: center;
       padding: 18px 60px;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
     }
 
-    .logo {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--accent);
-      letter-spacing: 1px;
-    }
+    .logo { color: var(--accent); font-weight: 700; font-size: 1.6rem; }
 
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 25px;
-    }
+    nav ul { display: flex; gap: 20px; list-style: none; }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-size: 0.95rem;
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      color: var(--accent);
-    }
-
-    /* HERO SECTION */
+    nav a { color: white; text-decoration: none; }
 
     .hero {
       height: 100vh;
       display: flex;
       align-items: center;
       padding: 0 80px;
-      position: relative;
-      background:
-        linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.35)),
-        url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop') center/cover;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+      url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600') center/cover;
     }
 
-    .hero-content {
-      max-width: 700px;
+    .hero h1 { font-size: 3.5rem; }
+    .hero p { color: var(--muted); margin-top: 10px; }
+
+    section { padding: 80px 60px; }
+
+    .section-title { color: var(--accent2); font-size: 2rem; margin-bottom: 20px; }
+
+    .box {
+      background: #111827;
+      padding: 25px;
+      border-radius: 15px;
+      margin-top: 20px;
     }
 
-    .hero h1 {
-      font-size: 4rem;
-      margin-bottom: 15px;
-      line-height: 1.1;
-    }
-
-    .hero p {
-      font-size: 1.1rem;
-      color: var(--muted);
-      margin-bottom: 30px;
-      line-height: 1.8;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 14px 28px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
-      display: inline-block;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: white;
-    }
-
-    .btn-primary:hover {
-      background: #ff2d55;
-      transform: translateY(-3px);
-    }
-
-    .btn-secondary {
-      background: rgba(255,255,255,0.15);
-      color: white;
-      backdrop-filter: blur(10px);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255,255,255,0.25);
-      transform: translateY(-3px);
-    }
-
-    /* SECTIONS */
-
-    section {
-      padding: 80px 60px;
-    }
-
-    .section-title {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: var(--accent2);
-    }
-
-    .about p {
-      color: var(--muted);
-      margin-bottom: 18px;
-      line-height: 1.9;
-      max-width: 1100px;
-    }
-
-    /* NETFLIX VIDEO ROW */
-
-    .video-row {
-      display: flex;
-      gap: 20px;
-      overflow-x: auto;
-      padding-bottom: 15px;
-      scrollbar-width: thin;
-    }
-
-    .video-row::-webkit-scrollbar {
-      height: 10px;
-    }
-
-    .video-row::-webkit-scrollbar-thumb {
-      background: var(--accent);
-      border-radius: 10px;
-    }
-
-    .video-card {
-      min-width: 360px;
-      background: var(--card);
-      border-radius: 18px;
-      overflow: hidden;
-      transition: 0.35s ease;
-      position: relative;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
-
-    .video-card:hover {
-      transform: scale(1.05);
-      background: var(--card-hover);
-      z-index: 5;
-    }
-
-    .video-card iframe {
-      width: 100%;
-      height: 220px;
-      border: none;
-    }
-
-    .video-info {
-      padding: 18px;
-    }
-
-    .video-info h3 {
-      font-size: 1rem;
-      margin-bottom: 8px;
-    }
-
-    .video-info p {
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-
-    /* CATEGORY CARDS */
-
-    .categories {
+    .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      margin-top: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 15px;
     }
 
-    .category-card {
-      background: linear-gradient(135deg, #1e293b, #111827);
-      padding: 30px 20px;
-      border-radius: 20px;
-      transition: 0.3s;
-      text-align: center;
-      border: 1px solid rgba(255,255,255,0.08);
+    .card {
+      background: #1f2937;
+      padding: 20px;
+      border-radius: 15px;
     }
-
-    .category-card:hover {
-      transform: translateY(-8px);
-      border-color: var(--accent);
-    }
-
-    .category-card h3 {
-      margin-bottom: 10px;
-      color: var(--accent2);
-    }
-
-    .category-card p {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    /* CONTACT */
-
-    .contact {
-      text-align: center;
-    }
-
-    .contact p {
-      color: var(--muted);
-      margin-bottom: 25px;
-    }
-
-    /* FOOTER */
 
     footer {
       text-align: center;
       padding: 30px;
       background: #050816;
       color: var(--muted);
-      font-size: 0.9rem;
-      margin-top: 40px;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 768px) {
-
-      nav {
-        padding: 18px 25px;
-        flex-direction: column;
-        gap: 12px;
-      }
-
-      nav ul {
-        gap: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .hero {
-        padding: 0 25px;
-        text-align: center;
-      }
-
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-
-      .hero-buttons {
-        justify-content: center;
-      }
-
-      section {
-        padding: 70px 25px;
-      }
-
-      .video-card {
-        min-width: 300px;
-      }
-
     }
 
   </style>
@@ -316,182 +93,97 @@
 
 <body>
 
-  <!-- NAVBAR -->
+<!-- NAV -->
+<nav>
+  <div class="logo">SMILE ROAD 🎬</div>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#content">Content</a></li>
+    <li><a href="#community">Community</a></li>
+  </ul>
+</nav>
 
-  <nav>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div>
+    <h1>SMILE ROAD</h1>
+    <p>INSPIRE. LEARN. EXPLORE. SMILE.</p>
+    <p><b>Knowledge today, freedom tomorrow.</b></p>
+    <p>Every step. Every smile. Every story.</p>
+  </div>
+</section>
 
-    <div class="logo">SMILE ROAD 🎬</div>
+<!-- INTRO BRAND -->
+<section>
+  <h2 class="section-title">THIS IS MY SMILE ROAD</h2>
+  <div class="box">
+    <p>EDUCATION · TECHNOLOGY · NATURE</p>
+    <p><b>Inspire. Learn. Explore. Smile.</b></p>
+    <br/>
+    <p>LET'S WALK TOGETHER. LET'S BUILD TOMORROW.</p>
+    <p><b>ENTER HERE TO LEVEL 81</b></p>
+    <br/>
+    <p><b>SMILE ROAD — Proudly Filipino. Proudly Forward.</b></p>
+  </div>
+</section>
 
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#videos">Videos</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+<!-- EDUCATION + CONTENT -->
+<section id="content">
+  <h2 class="section-title">EDUCATION</h2>
+  <div class="box">
+    <p><b>Empowering Minds</b></p>
+    <p>Educational Videos • Deep Explanations • Real-World Insights • Positive Impact</p>
+  </div>
 
-  </nav>
-
-  <!-- HERO -->
-
-  <section class="hero" id="home">
-
-    <div class="hero-content">
-
-      <h1>Learn, Explore, and Smile 😊</h1>
-
-      <p>
-        SMILE ROAD delivers educational, creative, and inspiring content in General Mathematics, General Science, Computer Programming, technology, and travel exploration.
-      </p>
-
-      <div class="hero-buttons">
-
-        <a href="https://youtube.com/@SMILEROAD-r5l" target="_blank" class="btn btn-primary">
-          ▶ Subscribe on YouTube
-        </a>
-
-        <a href="#videos" class="btn btn-secondary">
-          Browse Videos
-        </a>
-
-      </div>
-
+  <h2 class="section-title">CONTENT AREAS</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>💻 Technology</h3>
+      <p>Innovating the Future</p>
     </div>
 
-  </section>
-
-  <!-- ABOUT -->
-
-  <section class="about" id="about">
-
-    <h2 class="section-title">About SMILE ROAD</h2>
-
-    <p>
-      SMILE ROAD is a YouTube channel dedicated to sharing educational, creative, and positive content that inspires curiosity and brings a smile to every viewer’s day.
-    </p>
-
-    <p>
-      It features lessons in General Mathematics, General Science, and a wide range of programming and technology topics, including HTML5 Programming, Cascading Style Sheets (CSS), JavaScript functions, C# programming, ASP.NET Model-View-Controller (MVC), Java Programming, and Oracle Database systems.
-    </p>
-
-    <p>
-      All content is aligned with the Grade 11/12 Strengthened Senior High School Curriculum in the Philippines.
-    </p>
-
-    <p>
-      Beyond academics, the channel also explores travel and meaningful experiences from different destinations, promoting learning beyond the classroom.
-    </p>
-
-    <p>
-      Guided by the philosophy “Share the road with a smile,” SMILE ROAD aims to make every journey uplifting, engaging, and full of positivity. 😊
-    </p>
-
-    <!-- CATEGORY GRID -->
-
-    <div class="categories">
-
-      <div class="category-card">
-        <h3>📘 General Mathematics</h3>
-        <p>Lessons and tutorials designed to simplify mathematical concepts.</p>
-      </div>
-
-      <div class="category-card">
-        <h3>🔬 General Science</h3>
-        <p>Physics, Chemistry, Biology, and Earth & Space Science content.</p>
-      </div>
-
-      <div class="category-card">
-        <h3>💻 Computer Programming</h3>
-        <p>HTML5, CSS, JavaScript, Java, C#, ASP.NET MVC, and Oracle Database.</p>
-      </div>
-
-      <div class="category-card">
-        <h3>🌏 Travel</h3>
-        <p>Educational journeys and destination experiences beyond the classroom.</p>
-      </div>
-
+    <div class="card">
+      <h3>🌿 Nature</h3>
+      <p>Protecting Our Planet</p>
     </div>
 
-  </section>
-
-  <!-- VIDEOS -->
-
-  <section id="videos">
-
-    <h2 class="section-title">Featured Videos 🎥</h2>
-
-    <div class="video-row">
-
-      <div class="video-card">
-
-        <iframe
-          src="https://www.youtube.com/embed/mOPJrBOG0Ks?list=PLg1E3BuXRVb9tUeMxjJR5fHIJJ5UICZKl&index=57"
-          allowfullscreen>
-        </iframe>
-
-        <div class="video-info">
-          <h3>General Mathematics</h3>
-          <p>Interactive lessons aligned with the SHS curriculum.</p>
-        </div>
-
-      </div>
-
-      <div class="video-card">
-
-        <iframe
-          src="https://www.youtube.com/embed/Mr235v1XYSg?list=PLg1E3BuXRVb-Ji5RNobtrywK1PtAQ8CMT&index=55"
-          allowfullscreen>
-        </iframe>
-
-        <div class="video-info">
-          <h3>Programming Tutorials</h3>
-          <p>Learn coding concepts through beginner-friendly demonstrations.</p>
-        </div>
-
-      </div>
-
-      <div class="video-card">
-
-        <iframe
-          src="https://www.youtube.com/embed/S1nHd7fR0oE?list=PLg1E3BuXRVb9YsF2pOlQkul-z6iOKf2fn&index=74"
-          allowfullscreen>
-        </iframe>
-
-        <div class="video-info">
-          <h3>Science Lessons</h3>
-          <p>Explore exciting science concepts in a simple and engaging way.</p>
-        </div>
-
-      </div>
-
+    <div class="card">
+      <h3>🎭 Culture</h3>
+      <p>Celebrating Our Heritage</p>
     </div>
+  </div>
+</section>
 
-  </section>
+<!-- COMMUNITY -->
+<section id="community">
+  <h2 class="section-title">COMMUNITY MESSAGE</h2>
+  <div class="box">
+    <p><b>We learn. We share. We smile.</b></p>
+    <br/>
+    <p>🌐 youtube.com/@SmileRoad</p>
+    <p>👍 Like • 🔔 Subscribe • 📣 Turn on notifications</p>
+  </div>
+</section>
 
-  <!-- CONTACT -->
+<!-- UNIVERSITY -->
+<section>
+  <h2 class="section-title">S.R.U. – SMILE ROAD UNIVERSITY</h2>
+  <div class="box">
+    <p><b>Knowledge. Purpose. Impact.</b></p>
+    <br/>
+    <p><b>CORE VALUES</b></p>
+    <p>✔ Excellence in Learning</p>
+    <p>✔ Innovation in Thinking</p>
+    <p>✔ Inspiration in Action</p>
+    <p>✔ Integrity in Purpose</p>
+  </div>
+</section>
 
-  <section class="contact" id="contact">
-
-    <h2 class="section-title">Connect With SMILE ROAD</h2>
-
-    <p>
-      Subscribe for educational videos, technology tutorials, and inspiring adventures.
-    </p>
-
-    <a href="https://youtube.com/@SMILEROAD-r5l"
-       target="_blank"
-       class="btn btn-primary">
-       Visit YouTube Channel
-    </a>
-
-  </section>
-
-  <!-- FOOTER -->
-
-  <footer>
-    © 2026 SMILE ROAD. All rights reserved.
-  </footer>
+<!-- FOOTER -->
+<footer>
+  © 2026 SMILE ROAD. All rights reserved.
+</footer>
 
 </body>
 </html>
-```
-
