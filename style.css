@@ -1,0 +1,52 @@
+body{
+  margin:0;
+  overflow:hidden;
+  background:#050816;
+  font-family:Poppins, sans-serif;
+  color:white;
+}
+
+.ui{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  padding:15px 30px;
+  background:rgba(5,8,22,0.6);
+  backdrop-filter:blur(10px);
+  z-index:10;
+}
+
+.logo{
+  color:#00e5ff;
+  font-weight:700;
+}
+
+.nav a{
+  color:#aab3c5;
+  margin:0 10px;
+  text-decoration:none;
+  font-weight:600;
+}
+
+.nav a:hover{
+  color:#00e5ff;
+}
+
+.panel{
+  position:fixed;
+  bottom:20px;
+  left:20px;
+  background:rgba(15,23,42,0.8);
+  padding:15px;
+  border-radius:12px;
+  border:1px solid #ffffff10;
+  max-width:260px;
+}
+
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+}
