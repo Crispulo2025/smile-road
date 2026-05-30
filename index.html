@@ -1,145 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>SMILE ROAD UNIVERSITY 🌐</title>
+<title>SMILE ROAD METAVERSE SCHOOL 🌐</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
 :root{
-  --bg:#070b18;
-  --card:#111a2e;
+  --bg:#050816;
+  --panel:#0f172a;
   --accent:#ff4d6d;
-  --accent2:#ff8fa3;
+  --accent2:#00e5ff;
   --text:#fff;
-  --muted:#b9c2d3;
+  --muted:#aab3c5;
 }
 
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
+  font-family:Poppins,sans-serif;
   scroll-behavior:smooth;
 }
 
 body{
-  font-family:Poppins,sans-serif;
   background:var(--bg);
   color:var(--text);
   overflow-x:hidden;
 }
 
-/* FLOATING BACKGROUND */
-.bg-animation{
+/* HUD BACKGROUND */
+.bg{
   position:fixed;
-  width:100%;
-  height:100%;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 20%, #ff4d6d33, transparent 40%),
+    radial-gradient(circle at 80% 30%, #00e5ff22, transparent 40%),
+    radial-gradient(circle at 50% 80%, #7c3aed22, transparent 50%);
+  animation: float 10s infinite alternate;
   z-index:-1;
-  background: radial-gradient(circle at 20% 20%, #ff4d6d33, transparent 40%),
-              radial-gradient(circle at 80% 70%, #ff8fa333, transparent 40%),
-              radial-gradient(circle at 50% 50%, #3b82f633, transparent 50%);
-  animation: moveBg 10s infinite alternate ease-in-out;
 }
 
-@keyframes moveBg{
+@keyframes float{
   from{transform:scale(1);}
-  to{transform:scale(1.2);}
+  to{transform:scale(1.15);}
 }
 
-/* HEADER */
-header{
+/* LOGIN / ENTRY */
+.entry{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
   text-align:center;
-  padding:120px 20px 60px;
 }
 
-header h1{
+.entry h1{
   font-size:3rem;
-  letter-spacing:2px;
-  animation: glow 2s infinite alternate;
+  color:var(--accent2);
+  text-shadow:0 0 20px #00e5ff55;
 }
 
-@keyframes glow{
-  from{text-shadow:0 0 10px #ff4d6d;}
-  to{text-shadow:0 0 25px #ff8fa3;}
-}
-
-header p{
+.entry p{
   color:var(--muted);
   margin-top:10px;
 }
 
-/* BUTTON */
-.btn{
-  display:inline-block;
-  margin-top:20px;
-  padding:14px 28px;
+.enter-btn{
+  margin-top:25px;
+  padding:15px 40px;
   border-radius:50px;
-  background:var(--accent);
-  color:#fff;
+  background:linear-gradient(45deg,var(--accent),var(--accent2));
+  color:white;
+  font-weight:700;
   text-decoration:none;
-  font-weight:600;
+  box-shadow:0 0 25px #ff4d6d55;
   transition:.3s;
-  box-shadow:0 0 20px #ff4d6d55;
 }
 
-.btn:hover{
-  transform:translateY(-5px) scale(1.05);
-  background:#ff2d55;
+.enter-btn:hover{
+  transform:scale(1.05);
 }
 
-/* PORTAL GRID */
-.portal{
+/* DASHBOARD */
+.dashboard{
+  padding:60px;
+  display:none;
+}
+
+/* TOP HUD */
+.hud{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:30px;
+  padding:15px;
+  background:rgba(255,255,255,0.05);
+  border-radius:15px;
+  backdrop-filter:blur(10px);
+}
+
+.level{
+  color:var(--accent2);
+}
+
+/* GRID MAP */
+.grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
   gap:20px;
-  padding:40px 60px;
 }
 
-.card{
-  background:var(--card);
+/* CAMPUS MODULES */
+.module{
+  background:var(--panel);
   padding:25px;
   border-radius:18px;
-  transition:.4s;
   border:1px solid #ffffff10;
+  transition:.3s;
+  cursor:pointer;
   position:relative;
   overflow:hidden;
 }
 
-.card:hover{
+.module:hover{
   transform:translateY(-10px);
-  box-shadow:0 0 25px #ff4d6d55;
+  box-shadow:0 0 25px #00e5ff33;
 }
 
-.card h3{
+.module h3{
   color:var(--accent2);
   margin-bottom:10px;
 }
 
-/* LEVEL 81 BUTTON */
-.level81{
-  text-align:center;
-  padding:60px 20px;
+/* XP BAR */
+.xp-bar{
+  height:10px;
+  background:#1e293b;
+  border-radius:20px;
+  overflow:hidden;
+  margin-top:10px;
 }
 
-.level81 a{
-  font-size:1.2rem;
-  padding:16px 40px;
-  border-radius:60px;
-  background:linear-gradient(45deg,#ff4d6d,#ff8fa3);
-  color:white;
-  text-decoration:none;
-  font-weight:700;
-  animation:pulse 2s infinite;
-  display:inline-block;
+.xp-fill{
+  height:100%;
+  width:60%;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  animation:xp 3s infinite alternate;
 }
 
-@keyframes pulse{
-  0%{box-shadow:0 0 10px #ff4d6d55;}
-  50%{box-shadow:0 0 30px #ff4d6daa;}
-  100%{box-shadow:0 0 10px #ff4d6d55;}
+@keyframes xp{
+  from{width:40%;}
+  to{width:80%;}
 }
 
 /* FOOTER */
@@ -147,7 +163,7 @@ footer{
   text-align:center;
   padding:30px;
   color:var(--muted);
-  background:#050816;
+  margin-top:40px;
 }
 
 </style>
@@ -155,67 +171,77 @@ footer{
 
 <body>
 
-<div class="bg-animation"></div>
+<div class="bg"></div>
 
-<header>
-  <h1>SMILE ROAD UNIVERSITY</h1>
+<!-- ENTRY GATE -->
+<section class="entry" id="entry">
+  <h1>SMILE ROAD METAVERSE SCHOOL</h1>
   <p>Knowledge. Purpose. Impact.</p>
   <p><b>INSPIRE. LEARN. EXPLORE. SMILE.</b></p>
-  <a href="#portal" class="btn">Enter Portal</a>
-</header>
 
-<!-- PORTAL GRID -->
-<section id="portal" class="portal">
+  <a href="#" class="enter-btn" onclick="enterWorld()">ENTER THE CAMPUS 🚀</a>
+</section>
 
-  <div class="card">
-    <h3>📘 Education</h3>
-    <p>Empowering Minds through deep explanations and learning systems.</p>
+<!-- DASHBOARD -->
+<section class="dashboard" id="dashboard">
+
+  <div class="hud">
+    <div><b>SMILE ROAD UNIVERSITY</b></div>
+    <div class="level">LEVEL 81 • XP 60%</div>
   </div>
 
-  <div class="card">
-    <h3>💻 Technology</h3>
-    <p>HTML, CSS, JavaScript, Programming, and innovation pathways.</p>
+  <div class="grid">
+
+    <div class="module">
+      <h3>📘 Education Zone</h3>
+      <p>Math • Science • Deep Learning Systems</p>
+      <div class="xp-bar"><div class="xp-fill"></div></div>
+    </div>
+
+    <div class="module">
+      <h3>💻 Tech Lab</h3>
+      <p>HTML • CSS • JS • Python • Engineering Systems</p>
+      <div class="xp-bar"><div class="xp-fill"></div></div>
+    </div>
+
+    <div class="module">
+      <h3>🌿 Nature World</h3>
+      <p>Environmental Science & Sustainability Simulation</p>
+      <div class="xp-bar"><div class="xp-fill"></div></div>
+    </div>
+
+    <div class="module">
+      <h3>🎭 Culture Arena</h3>
+      <p>Heritage • Filipino Identity • Global Learning</p>
+      <div class="xp-bar"><div class="xp-fill"></div></div>
+    </div>
+
+    <div class="module">
+      <h3>🧠 AI Learning Core</h3>
+      <p>Adaptive Learning + Smart Knowledge System</p>
+      <div class="xp-bar"><div class="xp-fill"></div></div>
+    </div>
+
+    <div class="module">
+      <h3>🌐 Community Hub</h3>
+      <p>We learn. We share. We smile.</p>
+      <div class="xp-bar"><div class="xp-fill"></div></div>
+    </div>
+
   </div>
 
-  <div class="card">
-    <h3>🌿 Nature</h3>
-    <p>Protecting our environment and understanding Earth systems.</p>
-  </div>
-
-  <div class="card">
-    <h3>🎭 Culture</h3>
-    <p>Celebrating Filipino heritage and global diversity.</p>
-  </div>
-
-  <div class="card">
-    <h3>🧠 Learning System</h3>
-    <p>Interactive education designed for SHS learners and beyond.</p>
-  </div>
-
-  <div class="card">
-    <h3>🌐 Community</h3>
-    <p>We learn. We share. We smile.</p>
-  </div>
+  <footer>
+    SMILE ROAD METAVERSE SCHOOL — Proudly Filipino. Proudly Forward.
+  </footer>
 
 </section>
 
-<!-- LEVEL 81 -->
-<section class="level81">
-
-  <h2>ENTER HERE TO LEVEL 81</h2>
-  <p style="color:#b9c2d3;margin-top:10px;">
-    Every step. Every smile. Every story.
-  </p>
-
-  <br/>
-
-  <a href="#">START JOURNEY 🚀</a>
-
-</section>
-
-<footer>
-  © 2026 SMILE ROAD UNIVERSITY — Proudly Filipino. Proudly Forward.
-</footer>
+<script>
+function enterWorld(){
+  document.getElementById("entry").style.display = "none";
+  document.getElementById("dashboard").style.display = "block";
+}
+</script>
 
 </body>
 </html>
