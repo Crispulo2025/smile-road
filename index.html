@@ -23,7 +23,6 @@
   padding:0;
   box-sizing:border-box;
   font-family:Poppins,sans-serif;
-  scroll-behavior:smooth;
 }
 
 body{
@@ -32,7 +31,7 @@ body{
   overflow-x:hidden;
 }
 
-/* HUD BACKGROUND */
+/* ===== BACKGROUND ===== */
 .bg{
   position:fixed;
   inset:0;
@@ -40,16 +39,17 @@ body{
     radial-gradient(circle at 20% 20%, #ff4d6d33, transparent 40%),
     radial-gradient(circle at 80% 30%, #00e5ff22, transparent 40%),
     radial-gradient(circle at 50% 80%, #7c3aed22, transparent 50%);
-  animation: float 10s infinite alternate;
+  animation: bgMove 12s ease-in-out infinite alternate;
   z-index:-1;
+  filter: blur(0px);
 }
 
-@keyframes float{
-  from{transform:scale(1);}
-  to{transform:scale(1.15);}
+@keyframes bgMove{
+  from{transform:scale(1) rotate(0deg);}
+  to{transform:scale(1.2) rotate(2deg);}
 }
 
-/* LOGIN / ENTRY */
+/* ===== ENTRY ===== */
 .entry{
   height:100vh;
   display:flex;
@@ -57,12 +57,19 @@ body{
   justify-content:center;
   align-items:center;
   text-align:center;
+  animation: fadeIn 1.2s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
 }
 
 .entry h1{
   font-size:3rem;
   color:var(--accent2);
-  text-shadow:0 0 20px #00e5ff55;
+  text-shadow:0 0 25px #00e5ff55;
+  letter-spacing:1px;
 }
 
 .entry p{
@@ -72,64 +79,87 @@ body{
 
 .enter-btn{
   margin-top:25px;
-  padding:15px 40px;
+  padding:15px 42px;
   border-radius:50px;
   background:linear-gradient(45deg,var(--accent),var(--accent2));
   color:white;
   font-weight:700;
   text-decoration:none;
   box-shadow:0 0 25px #ff4d6d55;
-  transition:.3s;
+  transition: all .3s ease;
+  position:relative;
+  overflow:hidden;
 }
 
 .enter-btn:hover{
-  transform:scale(1.05);
+  transform:scale(1.08);
+  box-shadow:0 0 35px #00e5ff55;
 }
 
-/* DASHBOARD */
+.enter-btn::after{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:-100%;
+  background:rgba(255,255,255,0.15);
+  transform:skewX(-20deg);
+  transition:.5s;
+}
+
+.enter-btn:hover::after{
+  left:120%;
+}
+
+/* ===== DASHBOARD ===== */
 .dashboard{
   padding:60px;
   display:none;
+  animation: fadeIn 1s ease;
 }
 
-/* TOP HUD */
+/* HUD */
 .hud{
   display:flex;
   justify-content:space-between;
   align-items:center;
   margin-bottom:30px;
-  padding:15px;
+  padding:15px 20px;
   background:rgba(255,255,255,0.05);
   border-radius:15px;
-  backdrop-filter:blur(10px);
+  backdrop-filter:blur(12px);
+  border:1px solid #ffffff10;
 }
 
 .level{
   color:var(--accent2);
+  font-weight:600;
 }
 
-/* GRID MAP */
+/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
   gap:20px;
 }
 
-/* CAMPUS MODULES */
+/* MODULE */
 .module{
   background:var(--panel);
   padding:25px;
   border-radius:18px;
   border:1px solid #ffffff10;
-  transition:.3s;
+  transition:.3s ease;
   cursor:pointer;
   position:relative;
   overflow:hidden;
+  transform:translateY(0);
 }
 
 .module:hover{
-  transform:translateY(-10px);
-  box-shadow:0 0 25px #00e5ff33;
+  transform:translateY(-12px) scale(1.02);
+  box-shadow:0 0 30px #00e5ff33;
 }
 
 .module h3{
@@ -143,19 +173,19 @@ body{
   background:#1e293b;
   border-radius:20px;
   overflow:hidden;
-  margin-top:10px;
+  margin-top:12px;
 }
 
 .xp-fill{
   height:100%;
   width:60%;
   background:linear-gradient(90deg,var(--accent),var(--accent2));
-  animation:xp 3s infinite alternate;
+  animation: xpPulse 2.5s ease-in-out infinite alternate;
 }
 
-@keyframes xp{
-  from{width:40%;}
-  to{width:80%;}
+@keyframes xpPulse{
+  from{width:45%;}
+  to{width:85%;}
 }
 
 /* FOOTER */
@@ -164,6 +194,13 @@ footer{
   padding:30px;
   color:var(--muted);
   margin-top:40px;
+  font-size:0.9rem;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  .entry h1{font-size:2rem;}
+  .dashboard{padding:20px;}
 }
 
 </style>
@@ -173,13 +210,15 @@ footer{
 
 <div class="bg"></div>
 
-<!-- ENTRY GATE -->
+<!-- ENTRY -->
 <section class="entry" id="entry">
   <h1>SMILE ROAD METAVERSE SCHOOL</h1>
   <p>Knowledge. Purpose. Impact.</p>
   <p><b>INSPIRE. LEARN. EXPLORE. SMILE.</b></p>
 
-  <a href="#" class="enter-btn" onclick="enterWorld()">ENTER THE CAMPUS 🚀</a>
+  <a href="#" class="enter-btn" onclick="enterWorld(event)">
+    ENTER THE CAMPUS 🚀
+  </a>
 </section>
 
 <!-- DASHBOARD -->
@@ -237,9 +276,25 @@ footer{
 </section>
 
 <script>
-function enterWorld(){
-  document.getElementById("entry").style.display = "none";
-  document.getElementById("dashboard").style.display = "block";
+function enterWorld(e){
+  e.preventDefault();
+
+  const entry = document.getElementById("entry");
+  const dash = document.getElementById("dashboard");
+
+  entry.style.opacity = "0";
+  entry.style.transform = "scale(0.98)";
+
+  setTimeout(() => {
+    entry.style.display = "none";
+    dash.style.display = "block";
+    dash.style.opacity = "0";
+
+    setTimeout(() => {
+      dash.style.opacity = "1";
+    }, 50);
+
+  }, 600);
 }
 </script>
 
