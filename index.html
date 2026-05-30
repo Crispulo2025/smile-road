@@ -41,12 +41,71 @@ body{
     radial-gradient(circle at 50% 80%, #7c3aed22, transparent 50%);
   animation: bgMove 12s ease-in-out infinite alternate;
   z-index:-1;
-  filter: blur(0px);
 }
 
 @keyframes bgMove{
-  from{transform:scale(1) rotate(0deg);}
-  to{transform:scale(1.2) rotate(2deg);}
+  from{transform:scale(1);}
+  to{transform:scale(1.2);}
+}
+
+/* ===== NAVBAR ===== */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 40px;
+  background:rgba(5,8,22,0.7);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid #ffffff10;
+  z-index:1000;
+}
+
+.logo{
+  font-weight:700;
+  color:var(--accent2);
+  letter-spacing:1px;
+}
+
+.nav-links{
+  display:flex;
+  gap:20px;
+}
+
+.nav-links a{
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:600;
+  padding:8px 14px;
+  border-radius:20px;
+  transition:.3s;
+  cursor:pointer;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+  background:linear-gradient(45deg,var(--accent),var(--accent2));
+  color:white;
+  box-shadow:0 0 15px #00e5ff33;
+}
+
+/* ===== SECTIONS ===== */
+.section{
+  display:none;
+  min-height:100vh;
+  padding-top:90px;
+}
+
+.section.active{
+  display:block;
+  animation:fadeIn .6s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(15px);}
+  to{opacity:1; transform:translateY(0);}
 }
 
 /* ===== ENTRY ===== */
@@ -57,19 +116,12 @@ body{
   justify-content:center;
   align-items:center;
   text-align:center;
-  animation: fadeIn 1.2s ease;
-}
-
-@keyframes fadeIn{
-  from{opacity:0; transform:translateY(20px);}
-  to{opacity:1; transform:translateY(0);}
 }
 
 .entry h1{
   font-size:3rem;
   color:var(--accent2);
   text-shadow:0 0 25px #00e5ff55;
-  letter-spacing:1px;
 }
 
 .entry p{
@@ -85,56 +137,16 @@ body{
   color:white;
   font-weight:700;
   text-decoration:none;
-  box-shadow:0 0 25px #ff4d6d55;
-  transition: all .3s ease;
-  position:relative;
-  overflow:hidden;
+  transition:.3s;
 }
 
 .enter-btn:hover{
   transform:scale(1.08);
-  box-shadow:0 0 35px #00e5ff55;
-}
-
-.enter-btn::after{
-  content:"";
-  position:absolute;
-  width:100%;
-  height:100%;
-  top:0;
-  left:-100%;
-  background:rgba(255,255,255,0.15);
-  transform:skewX(-20deg);
-  transition:.5s;
-}
-
-.enter-btn:hover::after{
-  left:120%;
 }
 
 /* ===== DASHBOARD ===== */
 .dashboard{
-  padding:60px;
-  display:none;
-  animation: fadeIn 1s ease;
-}
-
-/* HUD */
-.hud{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:30px;
-  padding:15px 20px;
-  background:rgba(255,255,255,0.05);
-  border-radius:15px;
-  backdrop-filter:blur(12px);
-  border:1px solid #ffffff10;
-}
-
-.level{
-  color:var(--accent2);
-  font-weight:600;
+  padding:40px;
 }
 
 /* GRID */
@@ -144,48 +156,16 @@ body{
   gap:20px;
 }
 
-/* MODULE */
 .module{
   background:var(--panel);
   padding:25px;
   border-radius:18px;
   border:1px solid #ffffff10;
-  transition:.3s ease;
-  cursor:pointer;
-  position:relative;
-  overflow:hidden;
-  transform:translateY(0);
+  transition:.3s;
 }
 
 .module:hover{
-  transform:translateY(-12px) scale(1.02);
-  box-shadow:0 0 30px #00e5ff33;
-}
-
-.module h3{
-  color:var(--accent2);
-  margin-bottom:10px;
-}
-
-/* XP BAR */
-.xp-bar{
-  height:10px;
-  background:#1e293b;
-  border-radius:20px;
-  overflow:hidden;
-  margin-top:12px;
-}
-
-.xp-fill{
-  height:100%;
-  width:60%;
-  background:linear-gradient(90deg,var(--accent),var(--accent2));
-  animation: xpPulse 2.5s ease-in-out infinite alternate;
-}
-
-@keyframes xpPulse{
-  from{width:45%;}
-  to{width:85%;}
+  transform:translateY(-10px);
 }
 
 /* FOOTER */
@@ -194,13 +174,6 @@ footer{
   padding:30px;
   color:var(--muted);
   margin-top:40px;
-  font-size:0.9rem;
-}
-
-/* MOBILE */
-@media(max-width:600px){
-  .entry h1{font-size:2rem;}
-  .dashboard{padding:20px;}
 }
 
 </style>
@@ -210,92 +183,114 @@ footer{
 
 <div class="bg"></div>
 
-<!-- ENTRY -->
-<section class="entry" id="entry">
-  <h1>SMILE ROAD METAVERSE SCHOOL</h1>
-  <p>Knowledge. Purpose. Impact.</p>
-  <p><b>INSPIRE. LEARN. EXPLORE. SMILE.</b></p>
+<!-- NAVIGATION -->
+<nav>
+  <div class="logo">SMILE ROAD 🌐</div>
 
-  <a href="#" class="enter-btn" onclick="enterWorld(event)">
-    ENTER THE CAMPUS 🚀
-  </a>
+  <div class="nav-links">
+    <a class="active" onclick="showSection('home')">Home</a>
+    <a onclick="showSection('about')">About</a>
+    <a onclick="showSection('videos')">Videos</a>
+    <a onclick="showSection('contact')">Contact</a>
+  </div>
+</nav>
+
+<!-- HOME / ENTRY -->
+<section id="home" class="section active">
+  <div class="entry">
+    <h1>SMILE ROAD METAVERSE SCHOOL</h1>
+    <p>Knowledge. Purpose. Impact.</p>
+    <p><b>INSPIRE. LEARN. EXPLORE. SMILE.</b></p>
+
+    <a href="#" class="enter-btn" onclick="showSection('dashboard')">
+      ENTER THE CAMPUS 🚀
+    </a>
+  </div>
 </section>
 
 <!-- DASHBOARD -->
-<section class="dashboard" id="dashboard">
+<section id="dashboard" class="section">
+  <div class="dashboard">
 
-  <div class="hud">
-    <div><b>SMILE ROAD UNIVERSITY</b></div>
-    <div class="level">LEVEL 81 • XP 60%</div>
-  </div>
+    <div class="grid">
 
-  <div class="grid">
+      <div class="module">
+        <h3>📘 Education Zone</h3>
+        <p>Math • Science • Deep Learning Systems</p>
+      </div>
 
-    <div class="module">
-      <h3>📘 Education Zone</h3>
-      <p>Math • Science • Deep Learning Systems</p>
-      <div class="xp-bar"><div class="xp-fill"></div></div>
+      <div class="module">
+        <h3>💻 Tech Lab</h3>
+        <p>HTML • CSS • JS • Python</p>
+      </div>
+
+      <div class="module">
+        <h3>🌿 Nature World</h3>
+        <p>Environmental Science & Sustainability</p>
+      </div>
+
+      <div class="module">
+        <h3>🎭 Culture Arena</h3>
+        <p>Heritage • Filipino Identity • Global Learning</p>
+      </div>
+
     </div>
 
-    <div class="module">
-      <h3>💻 Tech Lab</h3>
-      <p>HTML • CSS • JS • Python • Engineering Systems</p>
-      <div class="xp-bar"><div class="xp-fill"></div></div>
-    </div>
-
-    <div class="module">
-      <h3>🌿 Nature World</h3>
-      <p>Environmental Science & Sustainability Simulation</p>
-      <div class="xp-bar"><div class="xp-fill"></div></div>
-    </div>
-
-    <div class="module">
-      <h3>🎭 Culture Arena</h3>
-      <p>Heritage • Filipino Identity • Global Learning</p>
-      <div class="xp-bar"><div class="xp-fill"></div></div>
-    </div>
-
-    <div class="module">
-      <h3>🧠 AI Learning Core</h3>
-      <p>Adaptive Learning + Smart Knowledge System</p>
-      <div class="xp-bar"><div class="xp-fill"></div></div>
-    </div>
-
-    <div class="module">
-      <h3>🌐 Community Hub</h3>
-      <p>We learn. We share. We smile.</p>
-      <div class="xp-bar"><div class="xp-fill"></div></div>
-    </div>
+    <footer>
+      SMILE ROAD METAVERSE SCHOOL — Proudly Filipino. Proudly Forward.
+    </footer>
 
   </div>
+</section>
 
-  <footer>
-    SMILE ROAD METAVERSE SCHOOL — Proudly Filipino. Proudly Forward.
-  </footer>
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="dashboard">
+    <h2>About SMILE ROAD</h2>
+    <p style="margin-top:15px;color:#aab3c5;">
+      A futuristic learning metaverse designed to blend education, technology, culture, and innovation into one immersive digital campus.
+    </p>
+  </div>
+</section>
 
+<!-- VIDEOS -->
+<section id="videos" class="section">
+  <div class="dashboard">
+    <h2>Videos</h2>
+    <p style="color:#aab3c5;margin-top:10px;">Learning modules and simulations coming soon...</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="dashboard">
+    <h2>Contact</h2>
+    <p style="color:#aab3c5;margin-top:10px;">
+      Email: smile@road.edu <br/>
+      System: SMILE ROAD METAVERSE HQ
+    </p>
+  </div>
 </section>
 
 <script>
-function enterWorld(e){
-  e.preventDefault();
 
-  const entry = document.getElementById("entry");
-  const dash = document.getElementById("dashboard");
+function showSection(id){
 
-  entry.style.opacity = "0";
-  entry.style.transform = "scale(0.98)";
+  // switch sections
+  document.querySelectorAll(".section").forEach(sec=>{
+    sec.classList.remove("active");
+  });
 
-  setTimeout(() => {
-    entry.style.display = "none";
-    dash.style.display = "block";
-    dash.style.opacity = "0";
+  document.getElementById(id).classList.add("active");
 
-    setTimeout(() => {
-      dash.style.opacity = "1";
-    }, 50);
+  // update nav active state
+  document.querySelectorAll(".nav-links a").forEach(a=>{
+    a.classList.remove("active");
+  });
 
-  }, 600);
+  event.target.classList.add("active");
 }
+
 </script>
 
 </body>
