@@ -1,295 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
+<meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>SMILE ROAD METAVERSE SCHOOL 🌐</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<title>SMILE ROAD 3D METAVERSE 🌐</title>
 
 <style>
-
-:root{
-  --bg:#050816;
-  --panel:#0f172a;
-  --accent:#ff4d6d;
-  --accent2:#00e5ff;
-  --text:#fff;
-  --muted:#aab3c5;
-}
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Poppins,sans-serif;
-}
-
 body{
-  background:var(--bg);
-  color:var(--text);
-  overflow-x:hidden;
+  margin:0;
+  overflow:hidden;
+  background:#050816;
+  font-family:Poppins,sans-serif;
+  color:white;
 }
 
-/* ===== BACKGROUND ===== */
-.bg{
-  position:fixed;
-  inset:0;
-  background:
-    radial-gradient(circle at 20% 20%, #ff4d6d33, transparent 40%),
-    radial-gradient(circle at 80% 30%, #00e5ff22, transparent 40%),
-    radial-gradient(circle at 50% 80%, #7c3aed22, transparent 50%);
-  animation: bgMove 12s ease-in-out infinite alternate;
-  z-index:-1;
-}
-
-@keyframes bgMove{
-  from{transform:scale(1);}
-  to{transform:scale(1.2);}
-}
-
-/* ===== NAVBAR ===== */
-nav{
+/* UI LAYER */
+.ui{
   position:fixed;
   top:0;
+  left:0;
   width:100%;
   display:flex;
   justify-content:space-between;
-  align-items:center;
-  padding:15px 40px;
-  background:rgba(5,8,22,0.7);
-  backdrop-filter:blur(12px);
+  padding:15px 30px;
+  z-index:10;
+  background:rgba(5,8,22,0.6);
+  backdrop-filter:blur(10px);
   border-bottom:1px solid #ffffff10;
-  z-index:1000;
 }
 
 .logo{
+  color:#00e5ff;
   font-weight:700;
-  color:var(--accent2);
   letter-spacing:1px;
 }
 
-.nav-links{
-  display:flex;
-  gap:20px;
-}
-
-.nav-links a{
-  color:var(--muted);
-  text-decoration:none;
+.nav button{
+  background:none;
+  border:none;
+  color:#aab3c5;
+  margin:0 10px;
   font-weight:600;
-  padding:8px 14px;
-  border-radius:20px;
-  transition:.3s;
   cursor:pointer;
-}
-
-.nav-links a:hover,
-.nav-links a.active{
-  background:linear-gradient(45deg,var(--accent),var(--accent2));
-  color:white;
-  box-shadow:0 0 15px #00e5ff33;
-}
-
-/* ===== SECTIONS ===== */
-.section{
-  display:none;
-  min-height:100vh;
-  padding-top:90px;
-}
-
-.section.active{
-  display:block;
-  animation:fadeIn .6s ease;
-}
-
-@keyframes fadeIn{
-  from{opacity:0; transform:translateY(15px);}
-  to{opacity:1; transform:translateY(0);}
-}
-
-/* ===== ENTRY ===== */
-.entry{
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-}
-
-.entry h1{
-  font-size:3rem;
-  color:var(--accent2);
-  text-shadow:0 0 25px #00e5ff55;
-}
-
-.entry p{
-  color:var(--muted);
-  margin-top:10px;
-}
-
-.enter-btn{
-  margin-top:25px;
-  padding:15px 42px;
-  border-radius:50px;
-  background:linear-gradient(45deg,var(--accent),var(--accent2));
-  color:white;
-  font-weight:700;
-  text-decoration:none;
   transition:.3s;
 }
 
-.enter-btn:hover{
-  transform:scale(1.08);
+.nav button:hover{
+  color:#00e5ff;
+  transform:scale(1.1);
 }
 
-/* ===== DASHBOARD ===== */
-.dashboard{
-  padding:40px;
-}
-
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:20px;
-}
-
-.module{
-  background:var(--panel);
-  padding:25px;
-  border-radius:18px;
+.panel{
+  position:fixed;
+  bottom:20px;
+  left:20px;
+  background:rgba(15,23,42,0.8);
+  padding:15px;
+  border-radius:12px;
   border:1px solid #ffffff10;
-  transition:.3s;
+  max-width:260px;
 }
 
-.module:hover{
-  transform:translateY(-10px);
+.title{
+  color:#00e5ff;
+  font-weight:700;
+  margin-bottom:5px;
 }
-
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:30px;
-  color:var(--muted);
-  margin-top:40px;
-}
-
 </style>
 </head>
 
 <body>
 
-<div class="bg"></div>
+<!-- UI -->
+<div class="ui">
+  <div class="logo">SMILE ROAD 3D 🌐</div>
 
-<!-- NAVIGATION -->
-<nav>
-  <div class="logo">SMILE ROAD 🌐</div>
-
-  <div class="nav-links">
-    <a class="active" onclick="showSection('home')">Home</a>
-    <a onclick="showSection('about')">About</a>
-    <a onclick="showSection('videos')">Videos</a>
-    <a onclick="showSection('contact')">Contact</a>
+  <div class="nav">
+    <button onclick="focusArea('home')">Home</button>
+    <button onclick="focusArea('about')">About</button>
+    <button onclick="focusArea('videos')">Videos</button>
+    <button onclick="focusArea('contact')">Contact</button>
   </div>
-</nav>
+</div>
 
-<!-- HOME / ENTRY -->
-<section id="home" class="section active">
-  <div class="entry">
-    <h1>SMILE ROAD METAVERSE SCHOOL</h1>
-    <p>Knowledge. Purpose. Impact.</p>
-    <p><b>INSPIRE. LEARN. EXPLORE. SMILE.</b></p>
+<div class="panel" id="panel">
+  <div class="title">Welcome</div>
+  <div id="info">Drag to explore the metaverse campus 🌍</div>
+</div>
 
-    <a href="#" class="enter-btn" onclick="showSection('dashboard')">
-      ENTER THE CAMPUS 🚀
-    </a>
-  </div>
-</section>
+<canvas id="scene"></canvas>
 
-<!-- DASHBOARD -->
-<section id="dashboard" class="section">
-  <div class="dashboard">
-
-    <div class="grid">
-
-      <div class="module">
-        <h3>📘 Education Zone</h3>
-        <p>Math • Science • Deep Learning Systems</p>
-      </div>
-
-      <div class="module">
-        <h3>💻 Tech Lab</h3>
-        <p>HTML • CSS • JS • Python</p>
-      </div>
-
-      <div class="module">
-        <h3>🌿 Nature World</h3>
-        <p>Environmental Science & Sustainability</p>
-      </div>
-
-      <div class="module">
-        <h3>🎭 Culture Arena</h3>
-        <p>Heritage • Filipino Identity • Global Learning</p>
-      </div>
-
-    </div>
-
-    <footer>
-      SMILE ROAD METAVERSE SCHOOL — Proudly Filipino. Proudly Forward.
-    </footer>
-
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="section">
-  <div class="dashboard">
-    <h2>About SMILE ROAD</h2>
-    <p style="margin-top:15px;color:#aab3c5;">
-      A futuristic learning metaverse designed to blend education, technology, culture, and innovation into one immersive digital campus.
-    </p>
-  </div>
-</section>
-
-<!-- VIDEOS -->
-<section id="videos" class="section">
-  <div class="dashboard">
-    <h2>Videos</h2>
-    <p style="color:#aab3c5;margin-top:10px;">Learning modules and simulations coming soon...</p>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="section">
-  <div class="dashboard">
-    <h2>Contact</h2>
-    <p style="color:#aab3c5;margin-top:10px;">
-      Email: smile@road.edu <br/>
-      System: SMILE ROAD METAVERSE HQ
-    </p>
-  </div>
-</section>
+<script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
 
 <script>
 
-function showSection(id){
+// ===== BASIC SCENE =====
+const scene = new THREE.Scene();
+scene.fog = new THREE.Fog(0x050816, 5, 20);
 
-  // switch sections
-  document.querySelectorAll(".section").forEach(sec=>{
-    sec.classList.remove("active");
+const camera = new THREE.PerspectiveCamera(
+  75,
+  window.innerWidth/window.innerHeight,
+  0.1,
+  1000
+);
+
+const renderer = new THREE.WebGLRenderer({
+  canvas: document.querySelector("#scene"),
+  antialias:true
+});
+
+renderer.setSize(window.innerWidth, window.innerHeight);
+camera.position.z = 8;
+
+// ===== LIGHTS =====
+const light = new THREE.PointLight(0x00e5ff, 1.5);
+light.position.set(5,5,5);
+scene.add(light);
+
+const ambient = new THREE.AmbientLight(0xff4d6d, 0.4);
+scene.add(ambient);
+
+// ===== CENTRAL GLOBE (METAVERSE CORE) =====
+const globeGeo = new THREE.SphereGeometry(2, 32, 32);
+const globeMat = new THREE.MeshStandardMaterial({
+  color:0x0f172a,
+  emissive:0x00e5ff,
+  emissiveIntensity:0.2,
+  wireframe:true
+});
+
+const globe = new THREE.Mesh(globeGeo, globeMat);
+scene.add(globe);
+
+// ===== MODULE NODES =====
+function createNode(x,y,z,color,text){
+  const geo = new THREE.BoxGeometry(0.6,0.6,0.6);
+  const mat = new THREE.MeshStandardMaterial({
+    color:color,
+    emissive:color,
+    emissiveIntensity:0.3
   });
 
-  document.getElementById(id).classList.add("active");
-
-  // update nav active state
-  document.querySelectorAll(".nav-links a").forEach(a=>{
-    a.classList.remove("active");
-  });
-
-  event.target.classList.add("active");
+  const cube = new THREE.Mesh(geo,mat);
+  cube.position.set(x,y,z);
+  cube.userData = {text};
+  scene.add(cube);
+  return cube;
 }
+
+const nodes = [
+  createNode(3,1,0,0xff4d6d,"Home Campus"),
+  createNode(-3,1,0,0x00e5ff,"About System"),
+  createNode(0,3,0,0x7c3aed,"Video Labs"),
+  createNode(0,-3,0,0xffcc00,"Contact Hub")
+];
+
+// ===== MOUSE CONTROL =====
+let mouseX = 0;
+let mouseY = 0;
+
+document.addEventListener("mousemove",(e)=>{
+  mouseX = (e.clientX/window.innerWidth - 0.5)*2;
+  mouseY = (e.clientY/window.innerHeight - 0.5)*2;
+});
+
+// ===== ANIMATION LOOP =====
+function animate(){
+  requestAnimationFrame(animate);
+
+  globe.rotation.y += 0.002;
+
+  scene.rotation.y += mouseX * 0.002;
+  scene.rotation.x += mouseY * 0.002;
+
+  renderer.render(scene,camera);
+}
+animate();
+
+// ===== INTERACTION =====
+function focusArea(area){
+
+  const panel = document.getElementById("info");
+
+  if(area==="home"){
+    camera.position.set(0,0,8);
+    panel.innerHTML = "Home Campus: Central learning hub of SMILE ROAD 🌐";
+  }
+
+  if(area==="about"){
+    camera.position.set(-3,1,6);
+    panel.innerHTML = "About: A 3D metaverse learning system for future education 🧠";
+  }
+
+  if(area==="videos"){
+    camera.position.set(0,3,6);
+    panel.innerHTML = "Videos: Immersive learning simulations coming soon 🎥";
+  }
+
+  if(area==="contact"){
+    camera.position.set(0,-3,6);
+    panel.innerHTML = "Contact: smile@road.edu | Metaverse HQ 📡";
+  }
+}
+
+// ===== CLICK DETECTION =====
+const raycaster = new THREE.Raycaster();
+const pointer = new THREE.Vector2();
+
+window.addEventListener("click",(event)=>{
+
+  pointer.x = (event.clientX/window.innerWidth)*2 - 1;
+  pointer.y = -(event.clientY/window.innerHeight)*2 + 1;
+
+  raycaster.setFromCamera(pointer,camera);
+
+  const hits = raycaster.intersectObjects(nodes);
+
+  if(hits.length>0){
+    const node = hits[0].object;
+    document.getElementById("info").innerHTML =
+      "You entered: " + node.userData.text;
+  }
+
+});
+
+// ===== RESIZE =====
+window.addEventListener("resize",()=>{
+  camera.aspect = window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth,window.innerHeight);
+});
 
 </script>
 
