@@ -1,118 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>SMILE ROAD | Contact</title>
-
 <link rel="stylesheet" href="style.css">
-
-<style>
-body{
-  margin:0;
-  overflow:hidden;
-  background:#050816;
-}
-
-/* FULLSCREEN METAVERSE CANVAS */
-canvas{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  display:block;
-  z-index:0;
-}
-
-/* UI ALWAYS ABOVE WORLD */
-.ui{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  z-index:10;
-}
-
-.panel{
-  z-index:10;
-}
-
-/* SAFE VISIBILITY CONTROL */
-.hidden{
-  display:none;
-}
-</style>
-
 </head>
 
 <body>
 
-<!-- UI -->
 <div class="ui">
   <div class="logo">SMILE ROAD 🌐</div>
-
   <div class="nav">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="videos.html">Videos</a>
-    <a href="contact.html" onclick="event.preventDefault(); showPanel('contact')">Contact</a>
+    <a href="contact.html">Contact</a>
   </div>
 </div>
 
-<!-- CONTACT PANEL -->
-<div class="panel" id="contactPanel">
+<div class="panel">
   <h2>Contact Hub</h2>
-
-  <p>📧 Email: <strong>smile@road.edu</strong></p>
-  <p>📡 Metaverse HQ: Global Digital Campus Node</p>
-  <p>🌐 Response System: Active</p>
-
-  <hr style="border:1px solid #ffffff20">
-
-  <p>Send inquiries about:</p>
-  <ul>
-    <li>🎓 Admissions</li>
-    <li>🧠 Metaverse Learning System</li>
-    <li>🏗 Engineering Simulations</li>
-    <li>🤖 AI Campus Integration</li>
-  </ul>
+  <p>Email: smile@road.edu</p>
+  <p>Metaverse HQ 📡</p>
 </div>
 
-<!-- OTHER PANELS (kept for compatibility) -->
-<div class="panel hidden" id="homePanel"></div>
-<div class="panel hidden" id="aboutPanel"></div>
-<div class="panel hidden" id="videosPanel"></div>
-
-<!-- 3D WORLD -->
 <canvas id="scene"></canvas>
-
-<!-- THREE.JS -->
 <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
-
-<!-- ENGINE -->
 <script src="app.js"></script>
-
-<!-- SAFE NAV FUNCTION -->
-<script>
-function showPanel(name){
-
-  document.querySelectorAll(".panel").forEach(p=>{
-    p.classList.add("hidden");
-  });
-
-  const target = document.getElementById(name + "Panel");
-  if(target){
-    target.classList.remove("hidden");
-  }
-
-  // optional metaverse camera movement
-  if(typeof camera !== "undefined"){
-    if(name === "contact") camera.position.set(0,-3,6);
-  }
-}
-</script>
 
 </body>
 </html>
