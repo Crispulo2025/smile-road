@@ -1,31 +1,113 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>SMILE ROAD | About</title>
+
 <link rel="stylesheet" href="style.css">
+
+<style>
+body{
+  margin:0;
+  overflow:hidden;
+  background:#050816;
+}
+
+/* Canvas must always fill screen */
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  display:block;
+  z-index:0;
+}
+
+/* UI always on top of 3D world */
+.ui{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:10;
+}
+
+.panel{
+  z-index:10;
+}
+
+/* safety hidden class */
+.hidden{
+  display:none;
+}
+</style>
+
 </head>
 
 <body>
 
+<!-- UI NAV -->
 <div class="ui">
   <div class="logo">SMILE ROAD 🌐</div>
+
   <div class="nav">
+    <!-- IMPORTANT FIX: prevent reload + allow smooth metaverse switching -->
     <a href="index.html">Home</a>
-    <a href="about.html">About</a>
+    <a href="about.html" onclick="event.preventDefault(); showPanel('about')">About</a>
     <a href="videos.html">Videos</a>
     <a href="contact.html">Contact</a>
   </div>
 </div>
 
-<div class="panel">
+<!-- ABOUT PANEL -->
+<div class="panel" id="aboutPanel">
   <h2>About System</h2>
-  <p>A 3D immersive metaverse designed for futuristic education and exploration 🧠</p>
+  <p>
+    SMILE ROAD is a 3D immersive metaverse learning environment designed for futuristic education,
+    exploration, and interactive digital experiences 🧠🌐
+  </p>
+
+  <p>
+    Built using WebGL + Three.js, it simulates a digital campus where users can navigate ideas as spaces.
+  </p>
 </div>
 
+<!-- OPTIONAL OTHER PANELS (so JS doesn't break if reused globally) -->
+<div class="panel hidden" id="homePanel"></div>
+<div class="panel hidden" id="videosPanel"></div>
+<div class="panel hidden" id="contactPanel"></div>
+
+<!-- 3D CANVAS -->
 <canvas id="scene"></canvas>
 
+<!-- THREE.JS -->
 <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+
+<!-- ENGINE -->
 <script src="app.js"></script>
+
+<!-- SAFETY NAV FUNCTION (prevents errors if missing global script logic) -->
+<script>
+function showPanel(name){
+
+  document.querySelectorAll(".panel").forEach(p=>{
+    p.classList.add("hidden");
+  });
+
+  const target = document.getElementById(name + "Panel");
+  if(target){
+    target.classList.remove("hidden");
+  }
+
+  // optional camera movement (only if app.js defines camera globally)
+  if(typeof camera !== "undefined"){
+    if(name === "about") camera.position.set(-3,1,6);
+  }
+}
+</script>
 
 </body>
 </html>
