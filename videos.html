@@ -1,31 +1,112 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>SMILE ROAD | Videos</title>
+
 <link rel="stylesheet" href="style.css">
+
+<style>
+body{
+  margin:0;
+  overflow:hidden;
+  background:#050816;
+}
+
+/* FULLSCREEN 3D CANVAS */
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  display:block;
+  z-index:0;
+}
+
+/* UI ALWAYS ABOVE 3D */
+.ui{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:10;
+}
+
+.panel{
+  z-index:10;
+}
+
+/* SAFE HIDE SYSTEM */
+.hidden{
+  display:none;
+}
+</style>
+
 </head>
 
 <body>
 
+<!-- UI -->
 <div class="ui">
   <div class="logo">SMILE ROAD 🌐</div>
+
   <div class="nav">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
-    <a href="videos.html">Videos</a>
+    <a href="videos.html" onclick="event.preventDefault(); showPanel('videos')">Videos</a>
     <a href="contact.html">Contact</a>
   </div>
 </div>
 
-<div class="panel">
+<!-- VIDEO PANEL -->
+<div class="panel" id="videosPanel">
   <h2>Video Labs</h2>
-  <p>Immersive simulations and learning content coming soon 🎥</p>
+  <p>Immersive learning simulations and 3D educational content coming soon 🎥🌐</p>
+
+  <ul>
+    <li>🔬 Science Simulations</li>
+    <li>⚙ Engineering Visualizations</li>
+    <li>🏗 Structural Modeling Walkthroughs</li>
+    <li>🧠 AI Learning Modules</li>
+  </ul>
 </div>
 
+<!-- OTHER PANELS (kept for safety compatibility) -->
+<div class="panel hidden" id="homePanel"></div>
+<div class="panel hidden" id="aboutPanel"></div>
+<div class="panel hidden" id="contactPanel"></div>
+
+<!-- 3D CANVAS -->
 <canvas id="scene"></canvas>
 
+<!-- THREE.JS -->
 <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+
+<!-- ENGINE -->
 <script src="app.js"></script>
+
+<!-- SAFE NAV SYSTEM -->
+<script>
+function showPanel(name){
+
+  document.querySelectorAll(".panel").forEach(p=>{
+    p.classList.add("hidden");
+  });
+
+  const target = document.getElementById(name + "Panel");
+  if(target){
+    target.classList.remove("hidden");
+  }
+
+  // optional camera movement (if global camera exists)
+  if(typeof camera !== "undefined"){
+    if(name === "videos") camera.position.set(0,3,6);
+  }
+}
+</script>
 
 </body>
 </html>
